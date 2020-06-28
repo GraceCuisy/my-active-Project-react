@@ -1,0 +1,66 @@
+.categoryWrap
+    width 100%
+    height 100%
+    .header
+      width 100%
+      height 88px
+      box-sizing border-box
+      padding 0 30px
+      border-bottom 1px solid #333
+      .searchBtn
+        position relative
+        width 100%
+        height 56px
+        background-color #eee
+        margin-top 16px
+        text-align center
+        line-height 56px
+        color #666
+        border-radius 10px
+        .fang
+          position absolute
+          left 175px
+          top 15px
+          width 28px
+          height 28px
+          background-image url('../../../assets/images/index/search.webp')
+          background-size cover
+    .contentWrap
+      display flex
+      width 100%
+      .leftContainer
+        width 20%
+        height calc(100vh - 186px)
+        box-sizing border-box
+        border-right 1px solid #333
+        overflow hidden
+        .leftContent
+          width 100%
+          display flex
+          flex-direction column
+          padding-bottom 50px
+          .navItem
+            width 100%
+            height 50px
+            text-align center
+            line-height 50px
+            margin-top 50px
+            &.active
+              position relative
+              a
+               color #AB2B2B
+              &:after
+                content ''
+                position absolute
+                left 5px
+                top 10%
+                width 5px
+                height 80%
+                background-color #AB2B2B
+            a
+              text-decoration none 
+              font-size 28px
+              color #333
+      .rightContainer
+        width 80%
+        height calc(100vh - 186px)
