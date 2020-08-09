@@ -2,6 +2,19 @@ import React, { Component } from 'react'
 import './css/cart.styl'
 
 export default class Cart extends Component {
+  state={
+    userInfo:{}
+  }
+  componentDidMount(){
+    // 从local中拿用户信息
+    let userInfo=localStorage.getItem('user_info_key')
+    if(userInfo){
+      this.setState({userInfo:JSON.parse(userInfo)})
+    }
+  }
+  handleLogin=()=>{
+    this.props.history.push('/login')
+  }
   render() {
     return (
       <div className='cartContainer'>
@@ -17,8 +30,8 @@ export default class Cart extends Component {
         <div className='contentWrap'>
           <div className='img'></div>
           {/* 显示登录按钮或者文字 "去添加点什么吧" */}
-          <div className='loginBtn'>登录</div>
-          <div className='cartText'>去添加点什么吧</div>
+          <div className='loginBtn' onClick={this.handleLogin} style={{display:`${this.state.userInfo.nickname?'none':'block'}`}}>登录</div>
+          <div className='cartText' style={{display:`${this.state.userInfo.nickname?'block':'none'}`}}>去添加点什么吧</div>
         </div>
       </div>
     )

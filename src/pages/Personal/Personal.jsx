@@ -2,6 +2,20 @@ import React, { Component } from 'react'
 import './css/personal.styl'
 
 export default class Personal extends Component {
+  state={
+    userInfo:{},
+  }
+  componentDidMount(){
+    let userInfo=localStorage.getItem('user_info_key')
+    if(userInfo){
+      this.setState({userInfo:JSON.parse(userInfo)})
+    }
+  }
+  // 点击退出登录的回调
+  cancelLogin=()=>{
+    localStorage.removeItem('user_info_key')
+    this.props.history.replace('/')
+  }
   render() {
     return (
       <div id='personalWrap'>
@@ -11,7 +25,7 @@ export default class Personal extends Component {
               <div className='left'>
                 <img className='avatar' src='https://yanxuan.nosdn.127.net/8945ae63d940cc42406c3f67019c5cb6.png' alt=""/>
                 <div className='info'>
-                  <p>用户名</p>
+                  <p>{this.state.userInfo.nickname?this.state.userInfo.nickname:'用户名'}</p>
                   <div className='userType'>
                     <span>普通用户</span>
                   </div>
@@ -109,7 +123,7 @@ export default class Personal extends Component {
               </div>
             </div>
           </div>
-          <h2 className='cancalLogin'>退出登录</h2>
+          <h2 className='cancalLogin' onClick={this.cancelLogin}>退出登录</h2>
         </div>
       </div>
     )
